@@ -2,24 +2,32 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
 import pickle
+import os
+from pathlib import Path
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 app = Flask(__name__)
 CORS(app)
 
+# Get the base directory
+BASE_DIR = Path(__file__).resolve().parent
+
 # Load model and tokenizer
 try:
-    lstm_model = load_model("/home/satam/Downloads/lstm_model.h5")
-    print("✓ Model loaded successfully")
+    # Try to load from environment variable first, then fall back to local paths
+    model_path = os.getenv('MODEL_PATH', str(BASE_DIR.parent / "model" / "lstm_model.h5"))
+    lstm_model = load_model(model_path)
+    print(f"✓ Model loaded from {model_path}")
 except Exception as e:
     print(f"✗ Error loading model: {e}")
     lstm_model = None
 
 try:
-    with open('/home/satam/facial/model/Tokenizer.pkl', 'rb') as file:
+    tokenizer_path = os.getenv('TOKENIZER_PATH', str(BASE_DIR.parent / "model" / "Tokenizer.pkl"))
+    with open(tokenizer_path, 'rb') as file:
         tokenizer = pickle.load(file)
-    print("✓ Tokenizer loaded successfully")
+    print(f"✓ Tokenizer loaded from {tokenizer_path}")
 except Exception as e:
     print(f"✗ Error loading tokenizer: {e}")
     tokenizer = None
@@ -126,10 +134,13 @@ if __name__ == '__main__':
     print("\n" + "="*50)
     print("Text Generation API Server")
     print("="*50)
-    print("Server starting on http://localhost:5000")
+    port = int(os.getenv('PORT', 5000))
+    print(f"Server starting on http://0.0.0.0:{port}")
     print("Endpoints:")
     print("  - POST /generate (seed_text, n_words)")
     print("  - GET /health")
     print("="*50 + "\n")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Don't use debug=True in production
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug_mode, host='0.0.0.0', port=port)

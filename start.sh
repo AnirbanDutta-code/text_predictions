@@ -8,7 +8,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}  Text Generation RNN - Quick Start${NC}"
+echo -e "${BLUE}  Text Prediction- Quick Start${NC}"
 echo -e "${BLUE}========================================${NC}\n"
 
 # Check if running from correct directory
@@ -35,7 +35,6 @@ fi
 
 # Run Flask in background
 python3 app.py &
-BACKEND_PID=$!
 echo -e "${GREEN}✓ Backend started (PID: $BACKEND_PID)${NC}"
 echo -e "${GREEN}  URL: http://localhost:5000${NC}\n"
 
