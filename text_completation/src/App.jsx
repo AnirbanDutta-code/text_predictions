@@ -15,7 +15,9 @@ function App() {
 
     setLoading(true)
     try {
-      const apiUrl = 'http://localhost:5000'
+      // const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+    const apiUrl = 'https://text-predictions.onrender.com/'
+
       const response = await fetch(`${apiUrl}/generate`, {
         method: 'POST',
         headers: {
