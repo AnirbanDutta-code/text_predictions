@@ -1,17 +1,9 @@
 [build]
-  command = "cd text_completation && npm run build"
-  publish = "text_completation/dist"
+  base = "text_completation"
+  command = "npm run build"
+  publish = "dist"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  from = "/*"
+  to = "/index.html"
   status = 200
-
-[context.production]
-  environment = { VITE_API_URL = "https://your-backend-url.com" }
-
-[context.deploy-preview]
-  environment = { VITE_API_URL = "https://your-backend-url.com" }
-
-[context.branch-deploy]
-  environment = { VITE_API_URL = "https://your-backend-url.com" }
