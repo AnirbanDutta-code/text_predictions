@@ -1,24 +1,16 @@
-# Text Generation AI App 🚀
+# LSTM powerd Text Prediction AI App 
 
 A beautiful React app that uses an LSTM neural network to generate text completions based on user input.
 
+# Interface
+![Text Generation App](text.png)
+
 ## Features
 
-✨ **Beautiful UI**
-- Modern gradient colors and animations
-- Smooth curve designs with glassmorphism effects
-- Responsive design for all devices
-- Animated background spheres
-
-🤖 **AI-Powered**
-- LSTM neural network for text generation
+- on device LSTM neural network for text generation
 - Word-by-word prediction
 - Customizable number of words to generate
 
-⚡ **Fast & Responsive**
-- Real-time text generation
-- Copy to clipboard functionality
-- Loading states and error handling
 
 ## Project Structure
 
