@@ -1,6 +1,9 @@
-# LSTM powerd Text Prediction AI App 
+# LSTM powerd Text Prediction  App 
 
 A beautiful React app that uses an LSTM neural network to generate text completions based on user input.
+
+# Mechanism
+Based on trained data it takes the given word tokenize using ``` texts_to_sequences``` then ```pad_sequences```  using kersas sequences (sequence lenth is the sentence lenth that  can be paseed  though UI ) that  given  to model ,model predicts words ,gives word index and output is shown by the word index 
 
 # Interface
 ![Text Generation App](text.png)
