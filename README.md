@@ -123,47 +123,6 @@ Check if the server and model are running
 - **Tertiary:** Blue to Cyan (#4facfe → #00f2fe)
 - **Background:** Light gradient blue
 
-## Customization
-
-### Change Colors
-Edit the CSS variables in [App.css](src/App.css):
-```css
-:root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --tertiary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-```
-
-### Adjust Model Paths
-In [backend/app.py](backend/app.py), update these paths if needed:
-- Model: `/home/satam/Downloads/lstm_model.h5`
-- Tokenizer: `/home/satam/facial/Tokenizer.pkl`
-
-## Troubleshooting
-
-**"Failed to connect to server"**
-- Make sure Flask backend is running on port 5000
-- Check CORS is enabled in Flask
-
-**"Model or tokenizer not loaded"**
-- Verify model and tokenizer file paths in app.py
-- Check file permissions
-
-**Frontend not updating**
-- Clear browser cache
-- Hard refresh (Ctrl+Shift+R or Cmd+Shift+R)
-
-## Build for Production
-
-```bash
-# Build React app
-cd text_completation
-npm run build
-
-# Build output in dist/ folder
-```
-
 ## License
 
 MIT License - Feel free to use and modify
